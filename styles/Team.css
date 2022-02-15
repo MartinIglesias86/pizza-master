@@ -1,0 +1,27 @@
+.Team {
+    display: flex;
+    position: absolute;
+    top:4px;
+    gap:4px;
+}
+.Team[data-team="player"] {
+    left:4px;
+}
+.Team[data-team="enemy"] {
+    right:4px;
+}
+/* Inicia rutas con estado como display:none. Inicialmente no muestra las pizzas muertas o inactivas */
+.Team .dead-pizza {
+    display:none;
+}
+.Team .active-pizza-indicator {
+    display:none;
+}
+
+/* Los iconos se muestran como se opto en los atributos de datos. Se activan los display como se eligio en los path */
+.Team [data-dead="true"] .dead-pizza {
+    display:block;
+}
+.Team [data-active="true"] .active-pizza-indicator {
+    display:block;
+}
