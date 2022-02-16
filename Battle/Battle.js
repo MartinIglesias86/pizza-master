@@ -1,60 +1,89 @@
 class Battle {
-    constructor() {
-        this.combatants = {
-            "player1": new Combatant({
-                ...Pizzas.s001,
-                team:"player",
-                hp:50,
-                maxHp:50,
-                xp:75,
-                maxXp: 100,
-                level:1,
-                status: null,
-                isPlayerControlled: true,
-            }, this),
-            "player2": new Combatant({
-                ...Pizzas.s002,
-                team:"player",
-                hp:50,
-                maxHp:50,
-                xp:75,
-                maxXp: 100,
-                level:1,
-                status: null,
-                isPlayerControlled: true,
-            }, this),
-            "enemy1": new Combatant({
-                ...Pizzas.v001,
-                team:"enemy",
-                hp:1,
-                maxHp:50,
-                xp:20,
-                maxXp: 100,
-                level:1,
-            }, this),
-            "enemy2": new Combatant({
-                ...Pizzas.f001,
-                team:"enemy",
-                hp:50,
-                maxHp:50,
-                xp:30,
-                maxXp: 100,
-                level:1,
-            }, this),
-        }
-        this.activeCombatants = {
-            player: "player1",
-            enemy: "enemy1",
-        }
-        //Listado de items (como instancias) util para trackear data extra de los items
-        this.items = [
-            { actionId: "item_recoverStatus", instanceId: "p1", team: "player" },
-            { actionId: "item_recoverStatus", instanceId: "p2", team: "player" },
-            { actionId: "item_recoverStatus", instanceId: "p3", team: "enemy" },
-            //Item item_recoverHp
-            { actionId: "item_recoverHp", instanceId: "p4", team: "player" },
-        ]
+    constructor({ enemy, onComplete }) {
 
+        this.enemy = enemy;
+        this.onComplete = onComplete;
+
+        this.combatants = {
+            // "player1": new Combatant({
+            //     ...Pizzas.s001,
+            //     team:"player",
+            //     hp:50,
+            //     level:50,
+            //     xp:95,
+            //     maxXp: 100,
+            //     level:1,
+            //     status: null,
+            //     isPlayerControlled: true,
+            // }, this),
+            // "player2": new Combatant({
+            //     ...Pizzas.s002,
+            //     team:"player",
+            //     hp:50,
+            //     level:50,
+            //     xp:95,
+            //     maxXp: 100,
+            //     level:1,
+            //     status: null,
+            //     isPlayerControlled: true,
+            // }, this),
+            // "enemy1": new Combatant({
+            //     ...Pizzas.v001,
+            //     team:"enemy",
+            //     hp:1,
+            //     level:50,
+            //     xp:20,
+            //     maxXp: 100,
+            //     level:1,
+            // }, this),
+            // "enemy2": new Combatant({
+            //     ...Pizzas.f001,
+            //     team:"enemy",
+            //     hp:50,
+            //     level:50,
+            //     xp:30,
+            //     maxXp: 100,
+            //     level:1,
+            // }, this),
+        }
+
+        this.activeCombatants = {
+            player: null, //"player1",
+            enemy: null, //"enemy1",
+        }
+
+        //Añade dinamicamente el Player Team
+        window.playerState.lineup.forEach(id => {
+            this.addCombatant(id, "player", window.playerState.pizzas[id])
+        });
+        //Añade dinamicamente el Enemy Team
+        Object.keys(this.enemy.pizzas).forEach(key => {
+            this.addCombatant("e_"+key, "enemy", this.enemy.pizzas[key])
+        })
+
+        //Listado de items (como instancias) util para trackear data extra de los items
+        //Empieza vacio
+        this.items = []
+        //Agrega los items del player
+        window.playerState.items.forEach(item => {
+            this.items.push({
+                ...item,
+                team: "player"
+            })
+        })
+        this.usedInstancesIds = {};
+
+    }
+
+    addCombatant(id, team, config) {
+        this.combatants[id] = new Combatant({
+            ...Pizzas[config.pizzaId],
+            ...config,
+            team,
+            isPlayerControlled: team === "player",
+        }, this)
+        //Rellena la primera pizza activa
+        this.activeCombatants[team] = this.activeCombatants[team] || id;
     }
 
     createElement() {
@@ -65,7 +94,7 @@ class Battle {
             <img src="${'/images/characters/people/hero.png'}" alt="Hero" />
         </div>
         <div class="Battle_enemy">
-            <img src="${'/images/characters/people/npc3.png'}" alt="Hero" />
+            <img src=${this.enemy.src} alt=${this.enemy.name} />
         </div>
         `)
     }
@@ -100,6 +129,31 @@ class Battle {
                     const battleEvent = new BattleEvent(event, this)
                     battleEvent.init(resolve);
                 })
+            },
+            onWinner: winner => {
+
+                if (winner === "player") {
+                    const playerState = window.playerState;
+                    Object.keys(playerState.pizzas).forEach(id => {
+                        const playerStatePizza = playerState.pizzas[id];
+                        const combatant = this.combatants[id];
+                        if (combatant) {
+                            playerStatePizza.hp = combatant.hp;
+                            playerStatePizza.xp = combatant.xp;
+                            playerStatePizza.maxXp = combatant.maxXp;
+                            playerStatePizza.level = combatant.level;
+                        }
+                    })
+
+                    //Elimina items usados por el jugador
+                    playerState.items = playerState.items.filter(item => {
+                        return !this.usedInstancesIds[item.instanceId]
+                    })
+
+                }
+
+                this.element.remove();
+                this.onComplete();
             }
         })
         this.turnCycle.init();

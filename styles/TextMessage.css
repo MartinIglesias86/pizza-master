@@ -1,4 +1,5 @@
 .TextMessage {
+    font-family:"Courier New", monospace;
     position: absolute;
     left: 0;
     right: 0;

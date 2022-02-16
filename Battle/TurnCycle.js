@@ -1,7 +1,8 @@
 class TurnCycle {
-    constructor({ battle, onNewEvent }) {
+    constructor({ battle, onNewEvent, onWinner }) {
         this.battle = battle;
         this.onNewEvent = onNewEvent;
+        this.onWinner = onWinner;
         this.currentTeam = "player"; //o "enemy"
     }
 
@@ -33,6 +34,11 @@ class TurnCycle {
         }
 
         if (submission.instanceId) {
+            
+            //Agrega item a la lista para que persista en el player state despues
+            this.battle.usedInstancesIds[submission.instanceId] = true;
+
+            //Remueve el item del battle state
             this.battle.items = this.battle.items.filter(i => i.instanceId !== submission.instanceId)
         }
 
@@ -55,6 +61,22 @@ class TurnCycle {
                 await this.onNewEvent({ 
                 type: "textMessage", text: `${submission.target.name} quedo arruinada!`
                 })
+
+                //Dar experiencia por matar otra pizza
+                if(submission.target.team === "enemy"){
+
+                    const playerActivePizzaId = this.battle.activeCombatants.player;
+                    const xp = submission.target.givesXp;
+                    await this.onNewEvent({
+                        type: "textMessage",
+                        text: `Ganaste ${xp} puntos de experiencia!`
+                    })
+                    await this.onNewEvent({
+                        type: "giveXp",
+                        xp,
+                        combatant: this.battle.combatants[playerActivePizzaId],
+                    })
+                }
             }   
         //Chequea si hay un equipo ganador
         const winner = this.getWinningTeam();
@@ -63,7 +85,7 @@ class TurnCycle {
             type: "textMessage",
             text: "Ganador!"
             })
-            //Termina la batalla
+            this.onWinner(winner);
             return;
         }
 
@@ -123,10 +145,10 @@ class TurnCycle {
         }
         
         async init() {
-            // await this.onNewEvent({
-            //   type: "textMessage",
-            //   text: "The battle is starting!"
-            // })
+            await this.onNewEvent({
+                type: "textMessage",
+                text: `${this.battle.enemy.name} te esta desafiando!`
+            })
         
             //Start the first turn!
             this.turn();
