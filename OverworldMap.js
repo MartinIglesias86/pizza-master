@@ -12,6 +12,7 @@ class OverworldMap {
         this.upperImage.src = config.upperSrc;
 
         this.isCutscenePlaying = false;
+        this.isPaused = false;
     }
     drawLowerImage(ctx, cameraPerson) {
         ctx.drawImage(
@@ -85,9 +86,9 @@ class OverworldMap {
     removeWall(x,y){
         delete this.walls[`${x},${y}`];
     }
-    moveWall(wasX, WasY, direction) {
-        this.removeWall(wasX, WasY);
-        const {x,y} = utils.nextPosition(wasX, WasY, direction);
+    moveWall(wasX, wasY, direction) {
+        this.removeWall(wasX, wasY);
+        const {x,y} = utils.nextPosition(wasX, wasY, direction);
         this.addWall(x,y);
     }
 }

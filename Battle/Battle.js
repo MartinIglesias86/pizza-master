@@ -149,7 +149,8 @@ class Battle {
                     playerState.items = playerState.items.filter(item => {
                         return !this.usedInstancesIds[item.instanceId]
                     })
-
+                    //Envia update al Hud
+                    utils.emitEvent("PlayerStateUpdated");
                 }
 
                 this.element.remove();
