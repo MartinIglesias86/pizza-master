@@ -24,8 +24,8 @@ window.Pizzas = {
         actions: [ "damage1", "saucyStatus", "clumsyStatus" ],
     },
     "v001":{
-        name: "Octopizza",
-        description: "He visto suficiente hentai...",
+        name: "Vegganita",
+        description: "Soy vegan nivel 5, no contengo nada que produzca sombra",
         type: PizzaTypes.veggie,
         src: "/images/characters/pizzas/v001.png",
         icon: "/images/icons/veggie.png",

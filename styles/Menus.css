@@ -1,4 +1,4 @@
-.PauseMenu {
+.overlayMenu {
     position:absolute;
     left:4.5em;
     top:1em;
@@ -12,12 +12,12 @@
     padding-bottom: 4px;
 }
 
-.PauseMenu .KeyboardMenu {
+.overlayMenu .KeyboardMenu {
     position: relative;
     border:0;
 }
 
-.PauseMenu h2 {
+.overlayMenu h2 {
     font-size: 10px;
     color: var(--menu-font-color);
     margin:0;
