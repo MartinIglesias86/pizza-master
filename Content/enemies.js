@@ -1,7 +1,7 @@
 window.Enemies = {
     "erio": {
         name: "Erio",
-        src: "images/characters/people/erio.png",
+        src: "pizza-master/images/characters/people/erio.png",
         pizzas: {
             "a": {
             pizzaId: "s001",
@@ -17,7 +17,7 @@ window.Enemies = {
     },
     "beth": {
         name: "Beth",
-        src: "images/characters/people/npc1.png",
+        src: "pizza-master/images/characters/people/npc1.png",
         pizzas: {
             "a": {
             hp: 1,
