@@ -18,7 +18,7 @@ class OverworldMap {
         ctx.drawImage(
             this.lowerImage,
             utils.withGrid(10.5) - cameraPerson.x,
-            utils.withGrid(6) - cameraPerson.y,
+            utils.withGrid(6) - cameraPerson.y
         )
     }
 
@@ -26,7 +26,8 @@ class OverworldMap {
         ctx.drawImage(
             this.upperImage,
             utils.withGrid(10.5) - cameraPerson.x,
-            utils.withGrid(6) - cameraPerson.y)
+            utils.withGrid(6) - cameraPerson.y
+        )
     }
 
     isSpaceTaken(currentX, currentY, direction) {
@@ -106,7 +107,7 @@ class OverworldMap {
 
 window.OverworldMaps = {
     DemoRoom: {
-        id: "DemorRoom",
+        id: "DemoRoom",
         lowerSrc: "/images/maps/DemoLower.png",
         upperSrc: "/images/maps/DemoUpper.png",
         gameObjects: {
@@ -224,7 +225,7 @@ window.OverworldMaps = {
                     ]
                 }
             ]
-        },
+        }
     },
     Kitchen: {
         id: "Kitchen",

@@ -10,10 +10,10 @@ class KeyboardMenu {
     setOptions(options) {
         this.options = options;
         this.element.innerHTML = this.options.map((option, index) => {
-            const disableAttr = option.disabled ? "disabled" : "";
+            const disabledAttr = option.disabled ? "disabled" : "";
             return (`
             <div class="option">
-                <button ${disableAttr} data-button="${index}" data-description="${option.description}">
+                <button ${disabledAttr} data-button="${index}" data-description="${option.description}">
                     ${option.label}
                 </button>
                 <span class="right">${option.right ? option.right() : ""}</span>
@@ -72,7 +72,7 @@ class KeyboardMenu {
             const current = Number(this.prevFocus.getAttribute("data-button"));
             const prevButton = Array.from(this.element.querySelectorAll("button[data-button]")).reverse().find(el => {
                 return el.dataset.button < current && !el.disabled;
-            });
+            })
             prevButton?.focus();
         })
         this.down = new KeyPressListener("ArrowDown", () => {

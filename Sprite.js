@@ -44,7 +44,7 @@ class Sprite {
     }
 
     setAnimation(key) {
-        if (this.currentAnimation != key) {
+        if (this.currentAnimation !== key) {
             this.currentAnimation = key;
             this.currentAnimationFrame = 0;
             this.animationFrameProgress = this.animationFrameLimit;
