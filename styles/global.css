@@ -33,3 +33,20 @@ body {
 .game-container canvas {
     image-rendering: pixelated;
 }
+
+.info-container {
+    position: relative;
+    top: 400px;
+    width: 351px;
+    height: 95px;
+    margin: 0 auto;
+    /* outline: 1px solid white; */
+    transform: scale(3) translateY(50%);
+    text-align: center;
+    color: aliceblue;
+    font-size: 5px;
+    image-rendering: pixelated;
+    display: none;
+}
+
+

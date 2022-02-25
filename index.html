@@ -5,22 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza Master</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="styles/global.css" type="text/css" rel="stylesheet">
     <link href="styles/TextMessage.css" type="text/css" rel="stylesheet">
     <link href="styles/SceneTransition.css" type="text/css" rel="stylesheet">
     <link href="styles/KeyboardMenu.css" type="text/css" rel="stylesheet">
     <link href="styles/Hud.css" type="text/css" rel="stylesheet">
+    <link href="styles/HelpButton.css" type="text/css" rel="stylesheet">
     <!-- Battle css -->
     <link href="styles/Battle.css" type="text/css" rel="stylesheet">
     <link href="styles/Combatant.css" type="text/css" rel="stylesheet">
     <link href="styles/SubmissionMenu.css" type="text/css" rel="stylesheet">
     <link href="styles/Team.css" type="text/css" rel="stylesheet">
     <link href="styles/Menus.css" type="text/css" rel="stylesheet">
+    <!--SweetAlert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/HelpButton.js"></script>
     
 </head>
 <body>
     <div class="game-container">
         <canvas class="game-canvas" width="352" height="198"></canvas>
+    </div>
+    <div  class="help-button"><button onclick="toogleDiv()" type="button" class="btn btn btn-light btn-sm" data-toggle="button" aria-pressed="false" autocomplete="off">Ayuda</button></div>>
+    <div id="myDIV" class="info-container container">
+        <div class="row ">
+            <div class="col-sm text-center">
+                <h6>Menu</h6>
+                <p>Para abrir el menu presiona la tecla ESC<img class="rounded" src="/images/esc-key.png"></p>
+            </div>
+            <div class="col-sm">
+                <h6>Interactuar</h6>
+                <p>Para interactuar con objetos y personajes presiona la tecla ENTER <br><img class="rounded" src="/images/enter-key.png"></p>
+            </div>
+            <div class="col-sm">
+                <h6>Movimiento</h6>
+                <p>Puedes moverte usando las flechas del teclado o usando las teclas W A S D<br><br><img class="rounded" src="/images/both.png"></p>
+            </div>
+        </div>
+        
     </div>
 
     <!-- Content -->
@@ -63,6 +86,8 @@
     
 
     <script src="init.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
 </body>
+
 </html>
