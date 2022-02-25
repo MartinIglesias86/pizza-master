@@ -1,7 +1,7 @@
 .Combatant {
     width: 67px;
     height: 14px;
-    background: url("pizza-master/images/ui/combatant-plate.png") no-repeat no-repeat;
+    background: url("https://martiniglesias86.github.io/pizza-master/images/ui/combatant-plate.png") no-repeat no-repeat;
     position:absolute;
 }
 .Battle .Combatant {
