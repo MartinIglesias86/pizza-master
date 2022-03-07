@@ -36,7 +36,7 @@ class TurnCycle {
         if (submission.instanceId) {
             
             //Agrega item a la lista para que persista en el player state despues
-            this.battle.usedInstancesIds[submission.instanceId] = true;
+            this.battle.usedInstanceIds[submission.instanceId] = true;
 
             //Remueve el item del battle state
             this.battle.items = this.battle.items.filter(i => i.instanceId !== submission.instanceId)

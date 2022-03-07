@@ -31,7 +31,7 @@ class Battle {
                 team: "player"
             })
         })
-        this.usedInstancesIds = {};
+        this.usedInstanceIds = {};
 
     }
 
@@ -43,7 +43,7 @@ class Battle {
             isPlayerControlled: team === "player",
         }, this)
         //Rellena la primera pizza activa
-        this.activeCombatants[team] = this.activeCombatants[team] || id;
+        this.activeCombatants[team] = this.activeCombatants[team] || id
     }
 
     createElement() {
@@ -107,7 +107,7 @@ class Battle {
 
                     //Elimina items usados por el jugador
                     playerState.items = playerState.items.filter(item => {
-                        return !this.usedInstancesIds[item.instanceId]
+                        return !this.usedInstanceIds[item.instanceId]
                     })
                     //Envia update al Hud
                     utils.emitEvent("PlayerStateUpdated");
