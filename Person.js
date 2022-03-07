@@ -18,11 +18,6 @@ class Person extends GameObject {
         if (this.movingProgressRemaining > 0) {
             this.updatePosition();
         }else {
-
-            //Mas casos para empezar a caminar van a ir aca
-            //
-            //
-
             //Estamos keyword ready y tenemos una flecha presionada
             if ( !state.map.isCutscenePlaying && this.isPlayerControlled && state.arrow) {
                 this.startBehavior(state, {

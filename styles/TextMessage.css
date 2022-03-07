@@ -1,5 +1,4 @@
 .TextMessage {
-    font-family:"Courier New", monospace;
     position: absolute;
     left: 0;
     right: 0;
@@ -13,7 +12,7 @@
 
 .TextMessage_p {
     margin: 0;
-    font-size: 12px;
+    font-size: 9px;
 }
 .TextMessage span {
     opacity: 0;

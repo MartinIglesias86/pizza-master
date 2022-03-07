@@ -20,9 +20,6 @@ class Progress {
                 storyFlags: playerState.storyFlags,
             }
         }))
-        swal("Partida guardada!", "Tu partida fue guardada!", "success", {
-            button: "A darle atomos!",
-        });
     }
 
     getSaveFile() {

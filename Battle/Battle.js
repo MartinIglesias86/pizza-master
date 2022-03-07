@@ -5,46 +5,6 @@ class Battle {
         this.onComplete = onComplete;
 
         this.combatants = {
-            // "player1": new Combatant({
-            //     ...Pizzas.s001,
-            //     team:"player",
-            //     hp:50,
-            //     level:50,
-            //     xp:95,
-            //     maxXp: 100,
-            //     level:1,
-            //     status: null,
-            //     isPlayerControlled: true,
-            // }, this),
-            // "player2": new Combatant({
-            //     ...Pizzas.s002,
-            //     team:"player",
-            //     hp:50,
-            //     level:50,
-            //     xp:95,
-            //     maxXp: 100,
-            //     level:1,
-            //     status: null,
-            //     isPlayerControlled: true,
-            // }, this),
-            // "enemy1": new Combatant({
-            //     ...Pizzas.v001,
-            //     team:"enemy",
-            //     hp:1,
-            //     level:50,
-            //     xp:20,
-            //     maxXp: 100,
-            //     level:1,
-            // }, this),
-            // "enemy2": new Combatant({
-            //     ...Pizzas.f001,
-            //     team:"enemy",
-            //     hp:50,
-            //     level:50,
-            //     xp:30,
-            //     maxXp: 100,
-            //     level:1,
-            // }, this),
         }
 
         this.activeCombatants = {
@@ -91,7 +51,7 @@ class Battle {
         this.element.classList.add("Battle");
         this.element.innerHTML = (`
         <div class="Battle_hero">
-            <img src="${'./images/characters/people/hero.png'}" alt="Hero" />
+            <img src="${'/images/characters/people/hero.png'}" alt="Hero" />
         </div>
         <div class="Battle_enemy">
             <img src=${this.enemy.src} alt=${this.enemy.name} />

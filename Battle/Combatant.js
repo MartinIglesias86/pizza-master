@@ -84,7 +84,7 @@ class Combatant {
 
     getReplacedEvents(originalEvents) {
 
-        if (this.status?.type === "atontado" && utils.randomFromArray([true, false, false])) {
+        if (this.status?.type === "atontado" && utils.randomFromArray([true, true, false])) {
         return [
             { type: "textMessage", text: `${this.name} se desploma!` },
         ]

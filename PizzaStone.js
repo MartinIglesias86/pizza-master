@@ -3,7 +3,7 @@ class PizzaStone extends GameObject {
         super(config);
         this.sprite = new Sprite({
             gameObject: this,
-            src: "./images/characters/pizza-stone.png",
+            src: "/images/characters/pizza-stone.png",
             animations: {
                 "used-down"   : [ [0,0] ],
                 "unused-down" : [ [1,0] ],
@@ -22,10 +22,17 @@ class PizzaStone extends GameObject {
                 ]
             },
             {
+                required: ["TALKED_TO_ERIO"],
                 events: [
                     { type: "textMessage", text: 'Encontraste la legendaria "Piedra para pizzas"'},
                     { type: "craftingMenu", pizzas: this.pizzas },
                     { type: "addStoryFlag", flag: this.storyFlag },
+                ]
+            },
+            {
+                events: [
+                    { type: "textMessage", text: "Como Chef reconoces que esto es una Piedra para pizzas."},
+                    { type: "textMessage", text: "Esto se ve util, mejor le pregunto a Tony antes de tocar."},
                 ]
             }
         ]

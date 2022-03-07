@@ -4,6 +4,7 @@
     position: absolute;
 }
 .KeyboardMenu button {
+    font-family: 'Ribeye', cursive;
     display: flex;
     align-items: center;
     width: 100%;
@@ -13,7 +14,6 @@
     background: none;
     height: 20px;
     cursor:pointer;
-    font-family:"Courier New", monospace;
     padding:0;
     padding-left: 1em;
     font-size: 10px;
@@ -35,12 +35,10 @@
     display: flex;
     align-items: center;
     padding-right: 3px;
-    font-family:"Courier New", monospace;
 }
 
 .DescriptionBox {
     position:absolute;
-    font-family:"Courier New", monospace;
     bottom:0;
     left:0;
     right:0;

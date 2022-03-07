@@ -21,7 +21,7 @@ class PauseMenu {
             return [
                 ...lineupPizzas,
                 {
-                    label: "Save",
+                    label: "Guardar",
                     description: "Guarda tu progreso",
                     handler: () => {
                         this.progress.save();
@@ -29,7 +29,7 @@ class PauseMenu {
                     }
                 },
                 {
-                    label: "Close",
+                    label: "Cerrar",
                     description:  "Cierra el menu",
                     handler: () => {
                         this.close();

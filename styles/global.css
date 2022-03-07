@@ -16,7 +16,7 @@ body {
     background: #333;
     padding: 0;
     margin: 0;
-    overflow: hidden;
+    font-family: 'Ribeye', cursive;
 }
 
 /* Contenedor del juego */
@@ -34,6 +34,7 @@ body {
     image-rendering: pixelated;
 }
 
+/* Contenedor de ayuda */
 .info-container {
     position: relative;
     top: 400px;
@@ -47,6 +48,5 @@ body {
     font-size: 5px;
     image-rendering: pixelated;
     display: none;
+    font-family: Arial, sans-serif;
 }
-
-
