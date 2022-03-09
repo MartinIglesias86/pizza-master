@@ -32,7 +32,7 @@ window.Enemies = {
         }
     },
     "beth": {
-        name: "Beth",
+        name: "Mica",
         src: "./images/characters/people/npc1.png",
         pizzas: {
             "a": {
